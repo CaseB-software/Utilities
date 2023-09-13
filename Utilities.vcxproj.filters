@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{a4def784-78c8-480c-a860-f39c9492be36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{869005f3-359e-4f7f-be39-0b2a8aa84a25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries">
+      <UniqueIdentifier>{97a017d3-c008-4e9c-8f94-d963dc0758fb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Text.cpp" />
+    <ClCompile Include="src\DateTime.cpp" />
+    <ClCompile Include="src\FileSystem.cpp" />
+    <ClCompile Include="src\Settings.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Public Headers\UTL_Text.h" />
+    <ClInclude Include="Public Headers\UTL_DateTime.h" />
+    <ClInclude Include="Public Headers\UTL_Files.h" />
+    <ClInclude Include="Public Headers\UTL_json.h" />
+    <ClInclude Include="Public Headers\UTL_Settings.h" />
+  </ItemGroup>
+</Project>
