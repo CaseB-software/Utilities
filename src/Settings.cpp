@@ -2,8 +2,24 @@
 
 #define _VERSION "0.1.0-dev"
 
+class Application {
+public:
+	static Application& getInstance() noexcept { static Application app; return app; };
+	~Application() {};
+
+	std::chrono::hours	getHourOffest()				const	{ return m_hourOffset; }
+	void				setHourOffest(int offset)			{ m_hourOffset = std::chrono::hours(offset);	}
+
+private:
+	Application() {};
+	const Application& operator=(const Application& rst) = delete;
+
+	std::chrono::hours m_hourOffset{ -7 };
+};
 
 namespace utl {
+
+	Application& app = Application::getInstance();
 
 	std::string version() {
 
@@ -22,4 +38,12 @@ namespace utl {
 		retBuf << "Compiled on " << __DATE__ << " at " << __TIME__;
 		return retBuf.str();
 	}
+
+	void setHourOffset(int offset) {
+		app.setHourOffest(offset);
+	}
+	std::chrono::hours	getHourOffset() {
+		return app.getHourOffest();
+	}
+
 }

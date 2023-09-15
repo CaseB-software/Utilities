@@ -8,7 +8,7 @@ namespace utl::time {
 	Timestamp::Timestamp() {
 
 	}
-	Timestamp::Timestamp(std::chrono::system_clock::time_point time) {
+	Timestamp::Timestamp(std::chrono::system_clock::time_point time) : m_time{ time },  m_isStamped{ true } {
 
 	}
 	Timestamp::~Timestamp() {
@@ -19,7 +19,7 @@ namespace utl::time {
 		using namespace std::literals;
 
 		if (!m_isStamped) {
-			m_time = time - 7h; // 7 hour time offset for real time
+			m_time = time + utl::getHourOffset(); // 7 hour time offset for real time
 			m_isStamped = true;
 			return true;
 		}
@@ -133,9 +133,9 @@ namespace utl::time {
 
 
 
-	// Labaled Timer
+	// Labeled Timer
 
-	LabeledTimer::LabeledTimer(const std::string& name = "New Timer"){
+	LabeledTimer::LabeledTimer(const std::string& name) : m_name{ name } {
 	
 	}
 	LabeledTimer::~LabeledTimer() {

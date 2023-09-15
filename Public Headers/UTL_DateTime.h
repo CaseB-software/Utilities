@@ -12,7 +12,7 @@ namespace utl {
 		class Timestamp {
 		public:
 			Timestamp();
-			Timestamp(std::chrono::system_clock::time_point time) : m_time{ time } { m_isStamped = true; }
+			Timestamp(std::chrono::system_clock::time_point time);
 			virtual ~Timestamp();
 
 
@@ -75,7 +75,7 @@ namespace utl {
 
 		class LabeledTimer : public Timer {
 		public:
-			LabeledTimer(const std::string& name = "New Timer") : m_name{ name };
+			LabeledTimer(const std::string& name = "New Timer");
 			~LabeledTimer();
 
 			std::string getName() const;
