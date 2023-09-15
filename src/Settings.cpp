@@ -5,7 +5,7 @@
 
 namespace utl {
 
-	std::string getVersion() {
+	std::string version() {
 
 #ifdef  _VERSION
 		return _VERSION;
@@ -17,7 +17,7 @@ namespace utl {
 
 	}
 
-	std::string getWhenCompiled() {
+	std::string compiledDate() {
 		std::ostringstream retBuf;
 		retBuf << "Compiled on " << __DATE__ << " at " << __TIME__;
 		return retBuf.str();

@@ -3,6 +3,6 @@
 
 namespace utl {
 
-	std::string getVersion();
-	std::string getWhenCompiled();
+	std::string version();
+	std::string compiledDate();
 }
