@@ -1,11 +1,12 @@
 #include "UTL_Settings.h"
 
-#define _VERSION "0.1.0-dev"
-
 class Application {
 public:
 	static Application& getInstance() noexcept { static Application app; return app; };
 	~Application() {};
+
+	std::string version()		const { return m_VERSION; }
+	std::string compiledDate()	const { return m_COMPILED_DATE;  }
 
 	std::chrono::hours	getHourOffest()				const	{ return m_hourOffset; }
 	void				setHourOffest(int offset)			{ m_hourOffset = std::chrono::hours(offset);	}
@@ -13,6 +14,9 @@ public:
 private:
 	Application() {};
 	const Application& operator=(const Application& rst) = delete;
+
+	const std::string m_VERSION			{ "0.1.0-dev" };
+	const std::string m_COMPILED_DATE	{ __DATE__ + std::string{" at "} + __TIME__ };
 
 	std::chrono::hours m_hourOffset{ -7 };
 };
@@ -22,21 +26,11 @@ namespace utl {
 	Application& app = Application::getInstance();
 
 	std::string version() {
-
-#ifdef  _VERSION
-		return _VERSION;
-#endif //  _VERSION
-
-#ifndef _VERSION
-		return "Version Not Specified";
-#endif
-
+		return app.version();
 	}
 
 	std::string compiledDate() {
-		std::ostringstream retBuf;
-		retBuf << "Compiled on " << __DATE__ << " at " << __TIME__;
-		return retBuf.str();
+		return app.compiledDate();
 	}
 
 	void setHourOffset(int offset) {
