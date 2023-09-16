@@ -28,8 +28,8 @@ namespace utl {
 	
 			bool isStamped() const;
 
-			std::chrono::system_clock::time_point	getRawTime()	const;
-			std::chrono::year_month_day				getRawYMD()		const;
+			std::chrono::system_clock::time_point	getRawTime()	const;	// Returns m_time
+			std::chrono::year_month_day				getRawYMD()		const;	// Returns m_time as a YMD
 
 			friend std::ostream& operator<<(std::ostream& os, const Timestamp& time);
 
@@ -59,10 +59,10 @@ namespace utl {
 			std::chrono::system_clock::time_point	getRawStartTime()	const;
 			std::chrono::system_clock::time_point	getRawEndTime()		const;
 
-			std::string printDate()			const;
-			std::string printDuration()		const;
-			std::string printStartTime()	const;
-			std::string printEndTime()		const;
+			std::string printDate()			const;	// Returns the Timestamp printDate() of m_start
+			std::string printDuration()		const;	// Returns the total time if ended
+			std::string printStartTime()	const;	// Returns the m_start printHMS()
+			std::string printEndTime()		const;	// Returns the m_end printHMS()
 
 		private:
 			Timestamp	m_start{}, m_end{};
@@ -89,7 +89,7 @@ namespace utl {
 
 
 
-		std::chrono::system_clock::time_point stringToTimepoint(const std::string& time);
+		std::chrono::system_clock::time_point stringToTimepoint(const std::string& time); // Converts a string of "YYYY-MM-DD HH:MM::SS" into a timepoint
 
 		void to_json	(utl::json::json& j, const Timestamp& t);
 		void from_json	(const utl::json::json& j, Timestamp& t);

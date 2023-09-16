@@ -120,14 +120,10 @@ namespace utl::time {
 		return std::format("{:%H:%M:%OS}", m_rawDuration);
 	}
 	std::string Timer::printStartTime() const {
-		using namespace std::literals;
-
-		return std::format("{:%OH:%OM:%OS}", this->getRawStartTime());
+		return m_start.printHMS();
 	}
 	std::string Timer::printEndTime() const {
-		using namespace std::literals;
-
-		return std::format("{:%OH:%OM:%OS}", this->getRawEndTime());
+		return m_end.printHMS();
 	}
 	// End Timer
 
