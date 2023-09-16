@@ -28,12 +28,12 @@ namespace utl {
 			}
 		}
 
-		std::string readUntilString(std::string& text, const char limit);					// Reads text until limit char found and deletes characters read	
+		std::string readUntilString(std::string& text, const char limit);	// Reads text until limit char found and deletes characters read	
 		
-		void ensureBackslash(std::string& input);
+		void ensureBackslash(std::string& input);	// Ensure there is a backslash for the given string. If not found, it emplaces '\\'
 	
-		std::string toUpper(std::string text);
-		std::string toLower(std::string text);
+		std::string toUpper(std::string text);		// Converts string to all upper case
+		std::string toLower(std::string text);		// Converts string to all lower case
 
 
 	}

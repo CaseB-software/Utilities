@@ -3,6 +3,12 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+## USER-ADDED BY BRADLEY RYAN
+*.ini
+*.sln
+*.vcxproj
+Utilities Client
+
 # User-specific files
 *.rsuser
 *.suo
@@ -361,3 +367,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Utilities.vcxproj
+/Utilities.vcxproj.filters
