@@ -23,7 +23,7 @@ namespace utl{
 
 
 		std::ofstream getFileToAppend(const std::string path);								// Opens returns stream to file in append mode
-		bool overwriteFile		(const std::string path, const std::string& text);			// Writes the given text to the file. Overwrites everything in the file. Returns TRUE if file was written, FALSE if file could not be found
+		bool overwriteFile		(const std::string path, const std::string& text);			// Overwrites everything in the file. If file does not exist, it creates it. Returns TRUE if file was written, FALSE if file could not be found
 		bool readFile			(const std::string path, std::ostringstream& output);		// Reads all text from a file and overwrites parameter output with the text. Returns TRUE if file was opened and read from, FALSE if file could not be found
 
 		std::vector<std::string> getFilesInDirectory(const std::string directoryToRead);	// Iterates through the given directory and adds file name to the return vector
