@@ -8,37 +8,30 @@ namespace utl::fs {
 
 		// Check whether the file exists and return appropriately
 		if (std::filesystem::exists(checkFile)) {
-			std::cerr << "File exists [" + path + ']' << std::endl;
 			return true;
 		}
 		else
 		{
-			std::cerr << "File does not exist [" + path + ']' << std::endl;
 			return false;
 		}
 	}
 
 	bool createDirectory(const std::string path) {
-		bool success{ false };
 
 		// Before creating directory, check if it already exists. If not found, create directory, still return true
 		if (doesFileExist(path)) {
-			std::cerr << "Found " + path << std::endl;
-			success = true;
+			return true;
 		}
 		else {
 			// If the directory could not be created, log and return FALSE
 			if (!std::filesystem::create_directory(path)) {
-				std::cerr << "Could not create directory " + path << std::endl;
-				success = false;
+				return false;
 			}
 			else{
-				std::cerr << "Created directory " + path << std::endl;
-				success = true;
+				return true;
 			}
 		}
-
-		return success;
+		return false;
 	}
 	
 	bool createFile(const std::string path) {
@@ -47,20 +40,14 @@ namespace utl::fs {
 		if (!doesFileExist(path)) {
 			std::ofstream file(path);	// Creates the file here
 
-			// If the file still does not exist, return FALSE		
 			if (!doesFileExist(path)) {
-				std::cerr << "Could not create [" + path + "]" << std::endl;
 				return false;
 			}
 			else {
-				// If creation successful, log and return TRUE
-				std::cerr << "Created file [" + path + "]" << std::endl;
 				return true;
 			}
 		}
 		else {
-			// If already found, no need to create. Log and return TRUE
-			std::cerr << "Already found File " + path << std::endl;
 			return true;
 		}
 	}
@@ -70,11 +57,9 @@ namespace utl::fs {
 
 		// Try to delete the file and return appropriately
 		if(std::filesystem::remove(file)){
-			std::cerr << "Deleted file " + file.string() << std::endl;
 			return true;
 		}
 		else{
-			std::cerr << "Could not delete file " + file.string() << std::endl;
 			return false;
 		}
 	}
@@ -96,7 +81,6 @@ namespace utl::fs {
 		else {
 			std::ofstream file{ path }; //Open file to write
 			file << text;
-			std::cerr << "Wrote to file [" + path + "]" << std::endl;
 			return true;
 		}
 		return false;
@@ -111,11 +95,9 @@ namespace utl::fs {
 			// Open file for reading
 			std::ifstream file{ path, std::ios_base::in};
 			if(!file) {
-				std::cerr << "Failed to open " + path + " for reading." << std::endl;
 				return false;
 			}
 			else {
-				std::cerr << "Successfully opened " + path + " for reading." << std::endl;
 				std::string line;
 				// Read the file line by line
 				while (file.good()) {
@@ -157,28 +139,19 @@ namespace utl::fs {
 			}
 		}
 
-		//Log how many files were found
-		std::ostringstream logText;
-		logText << "Found " << writeTo.size() << " file(s) in [" << directoryToRead << "]";
-		std::cerr << logText.str() << std::endl;
-
 		return writeTo;
 	}
 
 	bool 	renameFile		(const std::string oldPath, const std::string newPath){
-		bool success {false};
-
 		if(doesFileExist(oldPath)){
 			std::filesystem::rename(oldPath, newPath);
-			std::cerr << "Renamed [" + oldPath + "] to [" + newPath + "]" << std::endl;
-			success = true;
+			return true;
 		}
 		else{
-			std::cerr << "Could not find target file to rename [" + oldPath + "]" << std::endl;
-			success = false;
+			return false;
 		}
 
-		return success;
+		return false;
 	}
 
 }
