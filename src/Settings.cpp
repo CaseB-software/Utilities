@@ -18,7 +18,7 @@ namespace utl {
 		Application() {};
 		const Application& operator=(const Application& rst) = delete;
 
-		const std::string m_VERSION{ "v1.0.0" };
+		const std::string m_VERSION{ "v1.0.2" };
 		const std::string m_COMPILED_DATE{ __DATE__ + std::string{" at "} + __TIME__ };
 
 		std::chrono::hours m_hourOffset{ -7 };
